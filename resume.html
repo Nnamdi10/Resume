@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nnamdi Victor Mbah — Cybersecurity Analyst/Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Geist+Mono:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE7D9;
+    --ink: #1A1814;
+    --ink-mid: #3D3830;
+    --ink-light: #7A7060;
+    --gold: #8B6914;
+    --gold-light: #C4A44A;
+    --rule: rgba(26,24,20,0.12);
+    --serif: 'EB Garamond', Georgia, serif;
+    --mono: 'Geist Mono', 'Courier New', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  /* ── Page entry animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards;
+  }
+
+  /* ── Grain texture overlay ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.6;
+  }
+
+  /* ── Thin rule at top ── */
+  .top-rule {
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+    animation: fadeUp 1s ease forwards;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 2rem 6vw 1.5rem;
+    border-bottom: 0.5px solid var(--rule);
+    animation: fadeUp 0.7s 0.1s ease both;
+  }
+
+  .nav-name {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── Main container ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 6vw;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 7rem 0 5rem;
+    border-bottom: 0.5px solid var(--rule);
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 0.5px;
+    background: var(--gold-light);
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--ink-mid);
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-light);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+  }
+
+  .hero-contact a {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    text-decoration: none;
+    border-bottom: 0.5px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    padding-bottom: 1px;
+  }
+
+  .hero-contact a:hover {
+    color: var(--ink);
+    border-bottom-color: var(--rule);
+  }
+
+  /* ── Section layout ── */
+  section {
+    padding: 4.5rem 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 0.4rem;
+    position: sticky;
+    top: 2rem;
+  }
+
+  .section-intro {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  /* ── Two-col layout for content ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .two-col .label-col {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 0.4rem;
+  }
+
+  /* ── Profile ── */
+  .profile-text {
+    font-size: 1.08rem;
+    line-height: 1.85;
+    color: var(--ink-mid);
+  }
+
+  .profile-text p + p { margin-top: 1.2em; }
+
+  /* ── Projects ── */
+  .project-item {
+    padding: 2rem 0;
+    border-top: 0.5px solid var(--rule);
+  }
+
+  .project-item:first-child { border-top: none; padding-top: 0; }
+
+  .project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .project-tag {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold-light);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  .project-desc {
+    font-size: 0.95rem;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  .project-detail {
+    font-family: var(--mono);
+    font-size: 0.63rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ink-light);
+    line-height: 1.9;
+  }
+
+  .project-detail span {
+    display: inline-block;
+    margin-right: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .project-detail span::before {
+    content: '→ ';
+    color: var(--gold-light);
+  }
+
+  .project-link {
+    display: inline-block;
+    margin-top: 0.8rem;
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 0.5px solid var(--gold-light);
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+
+  .project-link:hover { color: var(--ink); border-bottom-color: var(--rule); }
+
+  /* ── Tools ── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    gap: 1.5rem 3rem;
+    align-items: baseline;
+  }
+
+  .tool-category {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    padding-top: 0.35rem;
+  }
+
+  .tool-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.8rem;
+    padding: 0.35rem 0 1.5rem;
+    border-bottom: 0.5px solid var(--rule);
+  }
+
+  .tools-grid > .tool-category:last-of-type + .tool-items { border-bottom: none; }
+
+  .tool-pill {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ink-mid);
+    background: var(--cream-dark);
+    border: 0.5px solid rgba(26,24,20,0.1);
+    padding: 3px 10px;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .tool-pill:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  /* ── Certifications ── */
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.1rem 0;
+    border-top: 0.5px solid var(--rule);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .cert-row:first-child { border-top: none; }
+
+  .cert-name {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .cert-status {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .cert-status.active { color: var(--gold); }
+  .cert-status.complete { color: #4A7A4A; }
+
+  /* ── Video section ── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .video-card {
+    background: var(--cream-dark);
+    border: 0.5px solid rgba(26,24,20,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+  }
+
+  .video-card:hover { border-color: rgba(26,24,20,0.25); }
+
+  .video-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .video-thumb-bg {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(139,105,20,0.06) 0px,
+      rgba(139,105,20,0.06) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+
+  .video-play {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(245,240,232,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .video-card:hover .video-play {
+    border-color: rgba(245,240,232,0.7);
+    transform: scale(1.08);
+  }
+
+  .video-play::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    border-left: 12px solid rgba(245,240,232,0.7);
+    margin-left: 3px;
+  }
+
+  .video-info {
+    padding: 1rem 1.1rem;
+  }
+
+  .video-ep {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.3rem;
+  }
+
+  .video-title {
+    font-family: var(--serif);
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.45;
+    margin-bottom: 0.4rem;
+  }
+
+  .video-meta {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: var(--ink-light);
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 0.5px solid var(--rule);
+    padding: 2.5rem 6vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .footer-name {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--ink-light);
+  }
+
+  .footer-right {
+    font-family: var(--mono);
+    font-size: 0.58rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+  }
+
+  /* ── Scroll animations ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    nav { flex-direction: column; gap: 1rem; }
+    .nav-links { gap: 1.5rem; }
+    .section-header,
+    .two-col,
+    .tools-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .section-label { position: static; }
+    .hero-name { font-size: 2.8rem; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 400px) {
+    .nav-links { flex-wrap: wrap; gap: 1rem; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="top-rule"></div>
+
+<nav>
+  <a href="#" class="nav-name">Nnamdi Victor Mbah —</a>
+  <ul class="nav-links">
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#video">Content</a></li>
+    <li><a href="mailto:nnamdimbah10@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- ── HERO ── -->
+  <header class="hero" id="top">
+    <div class="hero-eyebrow">Cybersecurity Analyst/Engineer</div>
+    <h1 class="hero-name">Nnamdi<br><em>Victor</em><br><em>Mbah</em></h1>
+    <p class="hero-title">Vulnerability Management · Security Operations · Threat Analysis</p>
+    <div class="hero-contact">
+      <a href="mailto:your@email.com">nnamdimbah10@gmail.com</a>
+      <a href="https://github.com/yourhandle" target="_blank" rel="noopener">github.com/Nnamdi10</a>
+      <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">linkedin.com/in/nnamdi-mbah</a>
+      <a href="#" target="_blank" rel="noopener">nvm.it.com</a>
+    </div>
+  </header>
+
+  <!-- ── PROFILE ── -->
+  <section id="profile" class="reveal">
+    <div class="section-header">
+      <div class="section-label">Profile</div>
+      <p class="section-intro">
+        A practitioner building towards a career in cybersecurity through deliberate, hands-on work not theory alone.
+      </p>
+    </div>
+    <div class="two-col">
+      <div class="label-col"></div>
+      <div class="profile-text">
+        <p>
+          I am a cybersecurity analyst in development, focused on vulnerability management and security operations. My approach is grounded in real lab environments, actual enterprise tooling, and the specific workflows that matter to hiring managers, not certification cramming for its own sake.
+        </p>
+        <p>
+          My current work centres on building a structured lab around Windows security telemetry: Sysmon log analysis, PowerShell endpoint investigation, and CVE research mapped to MITRE ATT&amp;CK. Every project I build is documented with the precision I would bring to a real SOC role.
+        </p>
+        <p>
+          I study for CompTIA Security+ SY0-701 with the same rigour, building custom study tooling, drilling interview-ready explanations of technical concepts, and practising the kind of nuanced articulation that separates analysts who understand their work from those who merely pass exams.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="reveal">
+    <div class="section-header">
+      <div class="section-label">Lab Projects</div>
+      <p class="section-intro">
+        Each project maps to a real employer requirement. Each produces a documented, demonstrable output.
+      </p>
+    </div>
+    <div class="two-col">
+      <div class="label-col"></div>
+      <div>
+
+        <div class="project-item">
+          <div class="project-meta">
+            <span class="project-name">Sysmon Log Analysis Lab</span>
+            <span class="project-tag">Threat Detection</span>
+          </div>
+          <p class="project-desc">
+            Deployed Sysmon in a Windows lab environment and built a structured analysis workflow around the five Event IDs most relevant to SOC L1 analysts: process creation (ID 1), network connections (ID 3), DLL loads (ID 7), file creation (ID 11), and registry modification (ID 13). Mapped findings to MITRE ATT&amp;CK techniques.
+          </p>
+          <div class="project-detail">
+            <span>Windows Sysmon v15</span>
+            <span>Event Viewer</span>
+            <span>PowerShell</span>
+            <span>MITRE ATT&CK T1059</span>
+            <span>T1547.001</span>
+          </div>
+          <a href="https://github.com/yourhandle/sysmon-lab" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="project-meta">
+            <span class="project-name">PowerShell Security Investigation Suite</span>
+            <span class="project-tag">Endpoint Analysis</span>
+          </div>
+          <p class="project-desc">
+            Built a collection of PowerShell scripts for endpoint triage and investigation: querying Sysmon operational logs, filtering for anomalous process creation, retrieving active defender threat history, and enumerating local users and scheduled tasks. Designed around remote enterprise use — not just local lab queries.
+          </p>
+          <div class="project-detail">
+            <span>Get-WinEvent</span>
+            <span>Get-MpThreat</span>
+            <span>Get-LocalUser</span>
+            <span>Get-ScheduledTask</span>
+            <span>FilterHashtable</span>
+          </div>
+          <a href="https://github.com/yourhandle/ps-security-suite" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="project-meta">
+            <span class="project-name">Device Guard / UMCI Bypass — CVE Research</span>
+            <span class="project-tag">Vulnerability Research</span>
+          </div>
+          <p class="project-desc">
+            Researched a Device Guard and User Mode Code Integrity bypass CVE in a controlled lab environment. Documented the attack vector, the VBS (Virtualisation-Based Security) protection layer, how the bypass circumvents UMCI policy enforcement, and the layered remediation approach aligned to Security+ Domain 4 (Security Operations).
+          </p>
+          <div class="project-detail">
+            <span>Device Guard</span>
+            <span>UMCI</span>
+            <span>VBS</span>
+            <span>HVCI</span>
+            <span>Security+ Domain 4.0</span>
+            <span>CVE research methodology</span>
+          </div>
+          <a href="https://github.com/yourhandle/device-guard-research" target="_blank" class="project-link">View write-up →</a>
+        </div>
+
+        <div class="project-item">
+          <div class="project-meta">
+            <span class="project-name">Security+ SY0-701 Study System</span>
+            <span class="project-tag">Tooling</span>
+          </div>
+          <p class="project-desc">
+            Engineered two browser-based study tools from a 1,556-question Anki deck: a spaced repetition quiz application with multiple study modes and voice support, and a podcast-style audio player for hands-free study. Both built in vanilla HTML/JS, running locally in Chrome, using the Web Speech API.
+          </p>
+          <div class="project-detail">
+            <span>Web Speech API</span>
+            <span>Vanilla JS</span>
+            <span>Spaced repetition algorithm</span>
+            <span>1,556 questions</span>
+          </div>
+          <a href="https://github.com/yourhandle/secplus-drill" target="_blank" class="project-link">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TOOLS ── -->
+  <section id="tools" class="reveal">
+    <div class="section-header">
+      <div class="section-label">Tools &amp; Frameworks</div>
+      <p class="section-intro">
+        The stack I have used in practice — in labs, in research, in documentation.
+      </p>
+    </div>
+    <div class="tools-grid">
+
+      <div class="tool-category">Detection &amp; Monitoring</div>
+      <div class="tool-items">
+        <span class="tool-pill">Sysmon</span>
+        <span class="tool-pill">Microsoft Sentinel</span>
+        <span class="tool-pill">Event Viewer</span>
+        <span class="tool-pill">Log Analytics</span>
+        <span class="tool-pill">KQL</span>
+        <span class="tool-pill">Microsoft Defender for Endpoint</span>
+      </div>
+
+      <div class="tool-category">Vulnerability Management</div>
+      <div class="tool-items">
+        <span class="tool-pill">Tenable</span>
+        <span class="tool-pill">CVSS Scoring</span>
+        <span class="tool-pill">CVE Research</span>
+        <span class="tool-pill">NIST NVD</span>
+        <span class="tool-pill">Patch Prioritisation</span>
+      </div>
+
+      <div class="tool-category">Windows Security</div>
+      <div class="tool-items">
+        <span class="tool-pill">PowerShell</span>
+        <span class="tool-pill">Device Guard</span>
+        <span class="tool-pill">VBS / HVCI</span>
+        <span class="tool-pill">UMCI</span>
+        <span class="tool-pill">Windows Event Forwarding</span>
+        <span class="tool-pill">Active Directory basics</span>
+      </div>
+
+      <div class="tool-category">Cloud &amp; Infrastructure</div>
+      <div class="tool-items">
+        <span class="tool-pill">Microsoft Azure</span>
+        <span class="tool-pill">Azure VMs</span>
+        <span class="tool-pill">Azure Active Directory</span>
+        <span class="tool-pill">Virtualisation (VirtualBox / VMware)</span>
+      </div>
+
+      <div class="tool-category">Frameworks</div>
+      <div class="tool-items">
+        <span class="tool-pill">MITRE ATT&amp;CK</span>
+        <span class="tool-pill">NIST 800-53</span>
+        <span class="tool-pill">CIS Controls</span>
+        <span class="tool-pill">NIST CSF</span>
+        <span class="tool-pill">OWASP</span>
+      </div>
+
+      <div class="tool-category">Certifications</div>
+      <div class="tool-items" style="flex-direction:column; gap:0.1rem; padding-bottom:0.5rem;">
+        <div class="cert-row" style="border:none; padding:0.5rem 0;">
+          <span class="cert-name">CompTIA Security+ SY0-701</span>
+          <span class="cert-status active">In Progress</span>
+        </div>
+        <div class="cert-row">
+          <span class="cert-name">Google Cybersecurity Certificate</span>
+          <span class="cert-status active">In Progress</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── VIDEO CONTENT ── -->
+  <section id="video" class="reveal">
+    <div class="section-header">
+      <div class="section-label">Content</div>
+      <p class="section-intro">
+        A series of technical videos modelled on employer-relevant, hands-on walkthroughs. Built to sharpen articulation as much as to teach.
+      </p>
+    </div>
+    <div class="two-col" style="margin-bottom:2rem;">
+      <div class="label-col"></div>
+      <p style="font-size:0.92rem; color:var(--ink-light); font-style:italic; line-height:1.7;">
+        The Precision Security Series — each video covers one employer-mapped topic: from zero to interview-ready explanation, with a live demo and resume-backed output.
+      </p>
+    </div>
+
+    <div class="two-col">
+      <div class="label-col"></div>
+      <div class="video-grid">
+
+        <a href="https://youtube.com/@yourhandle" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-bg"></div>
+            <div class="video-play"></div>
+          </div>
+          <div class="video-info">
+            <div class="video-ep">Episode 01</div>
+            <div class="video-title">Sysmon Log Analysis — Reading Telemetry Like an Analyst</div>
+            <div class="video-meta">18 min · Security+ Domain 4.0 · SOC L1</div>
+          </div>
+        </a>
+
+        <a href="https://youtube.com/@yourhandle" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-bg"></div>
+            <div class="video-play"></div>
+          </div>
+          <div class="video-info">
+            <div class="video-ep">Episode 02</div>
+            <div class="video-title">PowerShell Security Cmdlets — Endpoint Triage in Practice</div>
+            <div class="video-meta">15 min · Security+ Domain 4.0 · Endpoint Analysis</div>
+          </div>
+        </a>
+
+        <a href="https://youtube.com/@yourhandle" target="_blank" class="video-card">
+          <div class="video-thumb">
+            <div class="video-thumb-bg"></div>
+            <div class="video-play"></div>
+          </div>
+          <div class="video-info">
+            <div class="video-ep">Episode 03</div>
+            <div class="video-title">Device Guard &amp; VBS — Understanding the Bypass &amp; the Defence</div>
+            <div class="video-meta">20 min · Security+ Domain 1.0 · CVE Research</div>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-top:2rem;">
+      <div class="label-col"></div>
+      <a href="https://youtube.com/@yourhandle" target="_blank" class="project-link">
+        View all episodes on YouTube →
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span class="footer-name">Nino Surname</span>
+  <span class="footer-right">London, United Kingdom &nbsp;·&nbsp; Available for roles</span>
+</footer>
+
+<script>
+  // Scroll-reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.07 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
